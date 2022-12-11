@@ -57,10 +57,19 @@ public class DynamicProgramming {
      */
     public void bestSum(int cups) {
         StringBuilder groups = new StringBuilder();
+        int row = 12;
+        int col = cups;
 
-        for (int remainingCups = )
+        for (int remainingCups = cups;remainingCups > 0;) {
+            if (table[row][col] != table[row - 1][col]) {
+                groups.append(row).append(" ");
+                remainingCups -= row;
+                col -= row;
+            }
+            else row--;
+        }
 
-        System.out.printf("Best Sum for (%d teacups): $%d %s", cups, table[13][cups], groups.toString());
+        System.out.printf("Best Sum for (%d teacups): $%d %s", cups, table[12][cups], groups.toString());
         System.out.println();
     }
 
@@ -68,6 +77,7 @@ public class DynamicProgramming {
      * print the table all nice and pretty-like
      */
     public void printTable() {
+        System.out.println("Table:");
         for (int[] row : table) {
             // nicely format the table values
             for (int val : row)  System.out.printf("%2d ", val);

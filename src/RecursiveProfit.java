@@ -6,13 +6,14 @@ public class RecursiveProfit {
      * @param current
      */
     public void printSets(int cupsRemaining, String soFar, int current) {
-        // no cups left
-        if (cupsRemaining < 0)  return;
         // there will be negative cups left if we use current
-        if (current > cupsRemaining)  {
+        if (cupsRemaining == 0)  {
             System.out.println("1 ".repeat(cupsRemaining) + soFar);
             return;
         }
+
+        // no cups left
+        if (cupsRemaining < 0 || current > cupsRemaining)  return;
 
         // use current
         printSets(cupsRemaining - current, soFar + current + " ", current);
